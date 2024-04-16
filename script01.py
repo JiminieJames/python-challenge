@@ -2,7 +2,6 @@ import csv
 import os
 
 # Set path for file
-csv_file = "budget_data.csv"
 csvpath = os.path.join("PyBank", "Resources", "budget_data.csv")
 
 # Define variables to store financial analysis results
@@ -13,7 +12,7 @@ greatest_increase = ["", 0]
 greatest_decrease = ["", 0]
 
 # Read the data from the CSV file
-with open(csv_file, 'r') as file:
+with open(csvpath, 'r') as file:
     csv_reader = csv.reader(file)
     next(csv_reader)  # Skip the header row
 

@@ -2,16 +2,15 @@ import csv
 import os
 
 # Define the path to the CSV file
-csv_file = "election_data.csv"
 csvpath = os.path.join("PyPoll", "Resources", "election_data.csv")
 
-# Define variables to store vote counting results
+# Initialize variables to store vote counting results
 total_votes = 0
 candidate_votes = {}
 candidates = set()
 
 # Read the data from the CSV file
-with open(csv_file, 'r') as file:
+with open(csvpath, 'r') as file:
     csv_reader = csv.reader(file)
     next(csv_reader)  # Skip the header row
 
@@ -24,7 +23,10 @@ with open(csv_file, 'r') as file:
         total_votes += 1
 
         # Increment the vote count for the current candidate
-        candidate_votes[candidate] = candidate_votes.get(candidate, 0) + 1
+        if candidate in candidate_votes:
+            candidate_votes[candidate] += 1
+        else:
+            candidate_votes[candidate] = 1
 
         # Add the candidate to the set of unique candidates
         candidates.add(candidate)
@@ -41,10 +43,14 @@ for candidate in candidates:
     percentage = (votes / total_votes) * 100
     print(f"{candidate}: {percentage:.3f}% ({votes})")
 
-print("-" * 30)
-
 # Determine the winner of the election
-winner = max(candidate_votes, key=candidate_votes.get)
-print(f"Winner: {winner}")
+max_votes = 0
+winner = ""
+for candidate, votes in candidate_votes.items():
+    if votes > max_votes:
+        max_votes = votes
+        winner = candidate
 
+print("-" * 30)
+print(f"Winner: {winner}")
 print("-" * 30)
