@@ -2,8 +2,8 @@ import csv
 import os
 
 # Set path for file
-csvpath = os.path.join("PyBank", "Resources", "budget_data.csv")
-file_to_output = os.path.join("PyBank", "analysis.txt")
+csvpath = os.path.join("Resources", "budget_data.csv")
+file_to_output = os.path.join("analysis.txt")
 
 # Your task is to create a Python script that analyzes the records to calculate each of the following values:
 # Defining variables for later review
@@ -66,7 +66,7 @@ output = (f"Financial Analysis\n"
         f"------------------------------"
         )  
 #test print
-print(output)
+# print(output)
 
 #Learned from Megan the TA
 with open(file_to_output, "w") as txt_file:

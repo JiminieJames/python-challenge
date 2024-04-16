@@ -2,8 +2,8 @@ import csv
 import os
 
 # Define the path to the CSV file
-csvpath = os.path.join("PyPoll", "Resources", "election_data.csv")
-file_to_output = os.path.join("PyPoll", "analysis.txt")
+csvpath = os.path.join("Resources", "election_data.csv")
+file_to_output = os.path.join("analysis.txt")
 
 # Initialize variables to store vote counting results
 total_votes = 0
